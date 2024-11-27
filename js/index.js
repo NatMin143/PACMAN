@@ -574,7 +574,7 @@ afterGame.forEach((button) => {
         gameScreen.style.display = 'none';
         mapSelector.style.display = 'flex';
         lvlSelector.style.display = 'none';
-        mainScreen.style.display = 'flex';
+        mainScreen.style.display = 'flex';  
     })
 })
 
