@@ -65,7 +65,7 @@ let score = 0;
 
 export function startGame(map, player, ghosts) {
     const eatenFoodAudio = new Audio('./assets/musics/pacmanwakawaka.mp3')
-    const ghostAudio = new Audio('./assets/musics/ghostAudio.mp3')
+    const ghostAudio = new Audio('./assets/musics/ghostAudio.MP3')
     eatenFoodAudio.loop = true;
     eatenFoodAudio.play();
     ghostAudio.currentTime = 0;
