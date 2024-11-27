@@ -29,7 +29,6 @@ export function drawInitialFrame(map, player, ghosts, foodsStatus) {
 
     // Draw foods
     foods.forEach(food => {
-        // console.log(food)
         food.draw(c);
     });
     
@@ -191,6 +190,8 @@ export function startGame(map, player, ghosts) {
     }
 
     // ---------------------- GRAPHING ALGORITHM A* -----------------------
+
+
     function manhattanDist(from, toTarget) {
         return (
             Math.abs(toTarget.position.x - from.position.x) +
@@ -211,6 +212,8 @@ export function startGame(map, player, ghosts) {
     }
 
     // ------------------------- ADDITIONAL MOVEMENT FOR MORE TAILORED OR IMPROVED AI FOR THE GHOST ---------------------------
+
+    // EUCLIDEAN  DISTANCE FORMULA
     function findDistance(firstPoint, secondPoint) {
         return Math.sqrt(
             Math.pow(secondPoint.x - firstPoint.position.x, 2) +
@@ -264,7 +267,6 @@ export function startGame(map, player, ghosts) {
         velocity: { x: 0, y: 0 }
     }));
 
-    console.log("GSS", ghostsStartingState)
 
     let isAnimating = false;
 
@@ -324,15 +326,12 @@ export function startGame(map, player, ghosts) {
 
             // Check if the distance is less than the sum of the radii
             if (distance < ghost.radius + player.radius + 1) {
-                console.log("Collision Detected");
                 player.velocity = { x: 0, y: 0 };
 
                 lives -= 1;
-                console.log('Lives Left', lives);
                 updateLivesImage(lives);
 
                 // Reset all ghosts to their starting positions
-                console.log("BEFORE", ghosts)
                 ghosts.forEach((g, i) => {
                     g.position = { ...ghostsStartingState[i].position }; // Reset position
                     g.velocity = { ...ghostsStartingState[i].velocity }; // Reset velocity
@@ -485,7 +484,6 @@ export function startGame(map, player, ghosts) {
                         })
                     ) {
                         availablePath.splice(availablePath.indexOf("up"), 1);
-                        // console.log("Up is removed",)
                     }
 
                     if (
@@ -495,7 +493,6 @@ export function startGame(map, player, ghosts) {
                         })
                     ) {
                         availablePath.splice(availablePath.indexOf("right"), 1);
-                        // console.log("Right is removed",)
                     }
 
                     if (
@@ -505,7 +502,6 @@ export function startGame(map, player, ghosts) {
                         })
                     ) {
                         availablePath.splice(availablePath.indexOf("down"), 1);
-                        // console.log("Down is removed",)
                     }
 
                     if (
@@ -515,14 +511,11 @@ export function startGame(map, player, ghosts) {
                         })
                     ) {
                         availablePath.splice(availablePath.indexOf("left"), 1);
-                        // console.log("Left is removed",)
                     }
 
 
                 });
 
-
-                // console.log("INITIAL", availablePath)
                 // Remove the opposite of the previous direction
                 if (previousDirection) {
                     const opposite = {
@@ -550,13 +543,9 @@ export function startGame(map, player, ghosts) {
                     const randomIndex = Math.floor(Math.random() * availablePath.length);
                     const randomDirection = availablePath[randomIndex];
 
-                    // // Mark the random direction as visited
-                    // visitedPaths.push(randomDirection);
 
                     // Update the ghost's velocity
                     ghost.velocity = getVelocity(randomDirection, Ghost)
-
-
 
                     // Save the current direction as the previous direction
                     ghost.previousDirection = randomDirection;
@@ -568,7 +557,7 @@ export function startGame(map, player, ghosts) {
                 }
 
 
-                checkCollision(player, animationId)
+                checkCollision(player, animationId) // Check collision with player
             }
 
             // ------------------------------- FOR THE RED GHOST WHO ALWAYS CHASE PACMAN -------------------------
@@ -666,7 +655,7 @@ export function startGame(map, player, ghosts) {
                 let currentShortestDistance = Infinity;
                 let moveTo = ''
 
-                // FIND THE FINAL VERY BEST MOVE TO GO FROM THE BEST MOVES CHOICES BY CALCULATING THE DISTANCE TO THE PLAYER
+                // FIND THE FINAL VERY BEST MOVE TO GO FROM THE BEST MOVES CHOICES BY CALCULATING THE DISTANCE TO THE PLAYER (EUCLIDEAN DISTANCE)
                 // JUST ANOTHER ADDITION FOR MORE ACCURATE MOVEMENT OF CHASING OF THE GHOST
                 bestMoves.forEach((path) => {
                     const currentDistance = findDirectionDistance(path.direction, player, ghost);
@@ -679,7 +668,7 @@ export function startGame(map, player, ghosts) {
                     }
                 });
 
-
+                // move
                 ghost.velocity = getVelocity(moveTo, Ghost);
                 checkCollision(player, animationId)
                 ghost.update(c)

@@ -87,6 +87,8 @@ lvlButtons.forEach((button, index) => {
 });
 
 let stop = 0
+
+// init game to know what map and level of difficult to be use
 function initGame(gameMapLvl) {
     let player;
     let ghosts = []

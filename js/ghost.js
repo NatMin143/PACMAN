@@ -31,7 +31,7 @@ export class Ghost {
         c.lineTo(this.position.x + zigzagCount * zigzagWidth / 2, this.position.y + this.radius); // Close the zigzag at the bottom
         c.lineTo(this.position.x - zigzagCount * zigzagWidth / 2, this.position.y + this.radius); // Back to the starting point
         c.closePath();
-        c.fillStyle = this.color; // Ensure the fill color is the same as the ghost
+        c.fillStyle = this.color;
         c.fill();
 
         // Draw the eyes
@@ -54,20 +54,20 @@ export class Ghost {
         c.closePath();
 
         // Draw pupils
-        const pupilRadius = 1; // Radius of the pupils
-        const pupilOffsetX = 1; // Horizontal offset for pupils
+        const pupilRadius = 1;
+        const pupilOffsetX = 1;
 
         // Left pupil
         c.beginPath();
         c.arc(this.position.x - eyeOffsetX, this.position.y - eyeOffsetY, pupilRadius, 0, Math.PI * 2);
-        c.fillStyle = 'black'; // Pupil color
+        c.fillStyle = 'black';
         c.fill();
         c.closePath();
 
         // Right pupil
         c.beginPath();
         c.arc(this.position.x + eyeOffsetX, this.position.y - eyeOffsetY, pupilRadius, 0, Math.PI * 2);
-        c.fillStyle = 'black'; // Pupil color
+        c.fillStyle = 'black';
         c.fill();
         c.closePath();
     }

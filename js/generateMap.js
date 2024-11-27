@@ -8,7 +8,7 @@ function createImage(src) {
     return image;
 }
 
-// ------------------------------------ GENERATING MAP ------------------------------------------
+// ------------------------------------ GENERATING MAP ACCORDING TO WHAT SYMBOLS ARE IN THE MAP------------------------------------------
 export function generateMap(map, boundaries, foods) {
     map.forEach((row, i) => {
         row.forEach((symbol, j) => {
