@@ -1,0 +1,398 @@
+
+@font-face {
+    font-family: pacmanFont;
+    src: url(./assets/PacfontGood-yYye.ttf);
+}
+
+* {
+    margin: 0;
+    font-family: pacmanFont;
+    padding: 0;
+}
+body {
+    background-color: rgb(2, 2, 30);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+#mainScreen {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.pacmanLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+}
+
+.pacmanLogo img {
+    width: 80%;
+}
+
+#mapSelector{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+}
+
+#lvlSelector {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+}
+
+#backButtonLS {
+    position: absolute;
+    left: -700px;
+    top: 25px;
+    color: red;
+}
+
+#backButtonLS img {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+}
+
+#backButtonLS:hover img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    transition: 0.2s ease-in;
+}
+
+.map1, .map2, .map3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 35%;
+    margin: 10px;
+}
+
+.map1 img, .map2 img, .map3 img{
+    height: 80%;
+    width: 90%;
+    object-fit: fill;
+    margin-bottom: 5px;
+}
+
+.map1 button, .map2 button, .map3 button, #lvlEasy, #lvlMedium, #lvlHard, #lvlImpossible {
+    padding: 10px 20px 10px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-wrap: nowrap;
+    background-color: rgb(255, 136, 0);
+    border-radius: 10px;
+    border: 4px solid rgb(197, 49, 0);
+}
+
+.map1 button:hover, .map2 button:hover, .map3 button:hover, #lvlEasy:hover, #lvlMedium:hover, #lvlHard:hover, #lvlImpossible:hover {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    white-space: nowrap; /* Corrected 'text-wrap' to 'white-space' */
+    background-color: rgb(197, 49, 0);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+#lvlEasy, #lvlMedium, #lvlHard, #lvlImpossible {
+    margin: 20px;
+}
+
+#gameScreen {
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    position: absolute;
+    left: 20%;
+    top: 2%;
+    display: flex;
+}
+
+
+
+#gameStatus {
+    background-color: blue;
+    display: flex;
+    z-index: 3;
+}
+
+#scoreBoard {
+    font-family: Arial, Helvetica, sans-serif !important;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 65%;
+}
+
+.scorediv {
+    display: flex;
+}
+
+#livesLeftContainer {
+    height: 100px;
+    width: 200px;
+}
+
+#livesLeftContainer img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+#winnerScreen {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+}
+
+#winnerTextCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 500px;
+    color: yellow;
+    border-radius: 50px;
+    z-index: 1;
+}
+
+#winnerTextCont h1 {
+    background-color: black;
+    padding: 50px;
+    border-radius: 10px;
+    font-size: 3rem;
+}
+
+.winnerBgScreen {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(2, 2, 30);
+    opacity: 0.6;
+}
+
+#winnerTextCont button {
+    margin-top: 50px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    background-color: yellow;
+    border-color: transparent;
+}
+
+#winnerTextCont button:hover {
+    margin-top: 50px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    color: yellow;
+    border-color: transparent;
+    transition: 0.2s ease;
+}
+
+#gameOverScreen {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    transition: 0.5s ease-in;
+}
+
+#gameOverTextCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 500px;
+    color: rgb(255, 0, 0);
+    border-radius: 50px;
+    z-index: 1;
+}
+
+#gameOverTextCont h1 {
+    background-color: black;
+    padding: 50px;
+    border-radius: 10px;
+    font-size: 3rem;
+}
+
+.gameOverBgScreen {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(2, 2, 30);
+    opacity: 0.6;
+}
+
+#gameOverTextCont button {
+    margin-top: 50px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    background-color: yellow;
+    border-color: transparent;
+}
+
+#gameOverTextCont button:hover {
+    margin-top: 50px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    color: yellow;
+    border-color: transparent;
+    transition: 0.2s ease;
+}
+
+.mainContainer {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-side, .right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.pacman-logo {
+    display: flex;
+    justify-content: center;
+}
+
+.pacman-logo img{
+    width: 65%;
+    margin-top: 150px;
+}
+
+.subDet {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.docu, .video, .src-code {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+.docu i, .video i, .src-code i {
+    color: rgb(255, 85, 0);
+    font-size: 3rem;
+    margin-right: 20px;
+}
+
+.docu a, .video a, .src-code a {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.startGameBtn {
+    all: unset;
+    padding: 40px 100px;
+    background-color: rgb(255, 200, 0);
+    border-radius: 10px;
+    margin-top: 30px;
+    font-weight: bold;
+    border: 5px solid rgb(0, 0, 0);
+}
+
+.startGameBtn:hover {
+    all: unset;
+    padding: 40px 100px;
+    background-color: rgb(255, 85, 0);
+    border-radius: 10px;
+    margin-top: 30px;
+    font-weight: bold;
+    border: 5px solid rgb(0, 0, 0);
+    transition: 0.2s ease-in-out;
+}
+
+.main-img {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-img img {
+    width: 60%;
+}
+
+.message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message h1 {
+    color: rgb(255, 200, 0);
+    font-size: 1.5rem;
+}
+
+.message p {
+    margin-top: 10px;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
+
+.message p span {
+    color: rgb(255, 85, 0);
+}
+
+.message p:nth-child(2) {
+    width: 80%;
+}
+
+.message p:last-child {
+    margin-top: 10px;
+    width: 60%;
+    font-weight: 300;
+    color: rgb(140, 140, 140);
+}
+
+

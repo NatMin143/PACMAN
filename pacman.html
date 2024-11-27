@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>PACMAN GAME</title>
+    <link rel="preload" href="./assets/img/img35/pipeCorner1.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeCorner2.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeCorner3.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeCorner4.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeHorizontal.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeVertical.png" as="image">
+    <link rel="preload" href="./assets/img/img35/block.png" as="image">
+    <link rel="preload" href="./assets/img/img35/capBottom.png" as="image">
+    <link rel="preload" href="./assets/img/img35/capLeft.png" as="image">
+    <link rel="preload" href="./assets/img/img35/capRight.png" as="image">
+    <link rel="preload" href="./assets/img/img35/capTop.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeConnectorBottom.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeConnectorLeft.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeConnectorRight.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeConnectorTop.png" as="image">
+    <link rel="preload" href="./assets/img/img35/pipeCross.png" as="image">
+</head>
+
+<body>
+    
+    <div id="mainScreen">
+          
+        <div class="pacmanLogo">
+            <img src="./assets/pacmannn.png" alt="">
+        </div>
+
+        <div id="mapSelector">
+
+
+            <div class="map1">
+                <img src="./assets/map1.png" alt="">
+                <button id="map1Button">MAP ONE 1</button>
+            </div>
+
+            <div class="map2">
+                <img src="./assets/map2.png" alt="">
+                <button id="map2Button">MAP TWO 1</button>
+            </div>
+
+            <div class="map3">
+                <img src="./assets/map3.png" alt="">
+                <button id="map3Button">MAP THREE 1</button>
+            </div>
+        </div>
+
+        <div id="lvlSelector">
+            <div id="backButtonLS">
+                <img src="./assets/img/pacman-back.png" alt="">
+            </div>
+
+            <button id="lvlEasy">EASY</button>
+            <button id="lvlMedium">MEDIUM</button>
+            <button id="lvlHard">HARD</button>
+            <button id="lvlImpossible">IMPOSSIBLE</button>
+        </div>
+
+    </div>
+
+    <div id="gameScreen">
+        <canvas id="mainGame"></canvas>
+
+        <div id="gameStatus">
+            <div id="scoreBoard">
+                <div class="scorediv">
+                    <h3 style="font-family: 'Courier New', Courier, monospace; font-size: 30px; color: white;">Score: </h3>
+                    <p id="scoreEl" style="font-family: 'Courier New', Courier, monospace; font-size: 30px; color: rgb(252, 218, 0);">0</p>
+                </div>
+                <div id="livesLeftContainer">
+                    <img id="livesLeftImg" src="./assets/3lives.png" alt="">
+                </div>
+                
+            </div>
+        </div> 
+           
+    </div>
+
+    <div id="winnerScreen">
+        <div class="winnerBgScreen"></div>
+        <div id="winnerTextCont">
+            <h1 id="winnerText">YOU WIN!</h1>
+            <button id="wAfterGame">MAIN SCREEN</button>
+        </div>
+    </div>
+
+    <div id="gameOverScreen">
+        <div class="gameOverBgScreen"></div>
+        <div id="gameOverTextCont">
+            <h1 id="gameOverText">GAME OVER!</h1>
+            <button id="oAfterGame">MAIN SCREEN</button>
+        </div>
+    </div>
+    
+
+    <audio id="mainAudio" src="./assets/musics/Pac-man theme remix - By Arsenic1987.mp3" loop preload="auto">
+    </audio>
+
+    <audio id="audioPlayer" src="" preload="auto">
+    </audio>
+    
+    <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>
